@@ -24,7 +24,7 @@ The above documents tells in details how to start the board, and run the sample 
 The [Edge AI studio model composer](https://dev.ti.com/modelcomposer/) train , optimize and Compile the AI model for TI Embedded Processor. 
 Currently, the Edge AI Studio can compose Object detection and Image Classification Task.
 
-### Supported Devices for Edge AI Studio Model Composer
+**Supported Devices for Edge AI Studio Model Composer**
 
 | **DEVICE**              | **Supported**      |
 | :---:                   | :---:              |
@@ -50,7 +50,7 @@ Data can taken from various input sources. Click on the Input Source.
 
 :o: *Note that the data annotated outside the edgeAI Studio can not be imported. Only the data which are annotated and Downloaded from edge AI studio, that can be uploaded.*
 
-### 2. Data Annotations
+### 3. Data Annotations
 Once dataset is imported, data annotation can be done.
 
 **Steps for annotating For Object Detection:**
@@ -73,12 +73,12 @@ Once Done with the annotations, the annotated data can be downloaded by clicking
 It is recommended to Download the Annotated Data, incase by mistake project got deleted.
 
 
-### 3. Model Selection
-Once all the data is annotated, move to the next section.
-**Device Selection:** Select the Target device. Drag the slider to find the best trade-off between power and performance for your task.
+### 4. Model Selection
+Once all the data is annotated, move to the next section.\
+**Device Selection:** Select the Target device. Drag the slider to find the best trade-off between power and performance for your task.\
 **Model Selection:**  Select a model acording to the need "faster accuracy" or "faster Perfomance"
 
-### 4. Train
+### 5. Train
 Tune the training Parameter Acording to need. And Click on the start training button on the top-right.
 The trainig Perfomance will be Shown as shown in below image.
 
@@ -87,7 +87,7 @@ The trainig Perfomance will be Shown as shown in below image.
 Once the model is trained go to the next Section Compilation.
 
 
-### 5. Compilation
+### 6. Compilation
 In Compilation Section, Choose the compilation parameters from the drop down.
 If accuracy is not priority and only you need to compile to see the result select the "Best Speed Preset". 
 After that Hit Start Compiling.
@@ -100,17 +100,16 @@ Click on **Download the Artifact to PC** to Download the Compied model on the Lo
 
 :o: Note: Download the model to your PC before closing the browser. It will not be available when you log in again if you do not download it first.
 
+The Downloded model will look like this:
+![plot](Model_directory.png)
 
-### 5. Live Preview
+### 7. Live Preview
 
 
-### 6. Deployment on Board
+### 8. Deployment on Board
 Model can be Deployed on the board in two ways:
 1. Connect the board and click Deploy model on board.
 2. Manually Copying the Model on the board.
-
-### Deployment: Manually Copying the Model on the Board
-We can copy the model to the board manually.
 
 **Connecting Board to PC using UART**
 1. Install the [MobaXterm](https://mobaxterm.mobatek.net/download.html) to the PC to remotely connect to the Board.
@@ -119,7 +118,8 @@ We can copy the model to the board manually.
 4. Click on the Serial and select a Port from the drop down.
 5. Baud rate should be configured to **115200** bps in serial port communication program. 
 
-:o: Note: If using a Windows computer, the user may need to install additional drivers for ports to show up. (https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers). Click on the link , go to Downloads and Download and install ***CP210x Windows Drivers with Serial Enumerator***.
+:o: Note: If using a Windows computer, the user may need to install additional drivers for ports to show up. (https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers).\
+Click on the link. Go to Downloads. Download and install ***CP210x Windows Drivers with Serial Enumerator***.
 
 6. Once the port are visible, Connect to all the ports and Reboot the board. 
 7. The boot log will be visible in one of the ports. Other ports may be closed.
@@ -139,6 +139,22 @@ One Can also use **VS code** to remotely login using SSH.
 
 After login when You go to the `/opt` the directory structure will be like this:
 
-<img width="960" alt="SDK_directory" src="https://github.com/saurabh260120/edgeai-gst-apps-face-mask-detection/assets/91410452/aae01305-1c7b-4a9e-bb9d-e84f161403ac">
+![SDK Directory](SDK_directory.png)
+
+`/opt/edgeai-gst-apps`  Contains the apps to run the model.\
+`/opt/model_zoo` contains all the model. The downloaded model from the EDGE AI STUDIO will be saved here.\
+`/opt/edgeai-test-data` contains the input data ( image , videos to run the model ).
+
+
+**Copying Downloaded model to the board**
+
+We can use `scp` Command to copy the model from our PC to the borad.
+1. Open your terminal
+2. Go to the directory where Model is saved.
+3. Type the following command:\
+```scp -r model_file_name root@ip_address_of_board:/opt/model_zoo```
+
+![copying_model](copying_model.png)
+
 
 
