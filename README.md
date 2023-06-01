@@ -118,7 +118,13 @@ We can copy the model to the board manually.
 3. Open MobaXterm and Click on session.
 4. Click on the Serial and select a Port from the drop down.
 5. Baud rate should be configured to **115200** bps in serial port communication program. 
-:o: Note: If using a Windows computer, the user may need to install additional drivers for ports to show up. (https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers)
+
+:o: Note: If using a Windows computer, the user may need to install additional drivers for ports to show up. (https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers). Click on the link , go to Downloads and Download and install ***CP210x Windows Drivers with Serial Enumerator***.
+
+6. Once the port are visible, Connect to all the ports and Reboot the board. 
+7. The boot log will be visible in one of the ports. Other ports may be closed.
+8. In login prompt : type ***root*** as user.
+9. Your current directory in terminal will be like: `/opt/edgeai-gst-apps`
 
 
 
