@@ -94,6 +94,7 @@ After that Hit Start Compiling.
 It will take some good amout of time.
 
 After Compilation is over, the screen will be something like below image.
+
 ![plot](compiled_model.png)
 
 Click on **Download the Artifact to PC** to Download the Compied model on the Local PC.
@@ -101,6 +102,7 @@ Click on **Download the Artifact to PC** to Download the Compied model on the Lo
 :o: Note: Download the model to your PC before closing the browser. It will not be available when you log in again if you do not download it first.
 
 The Downloded model will look like this:
+
 ![plot](Model_directory.png)
 
 ### 7. Live Preview
@@ -126,8 +128,8 @@ Click on the link. Go to Downloads. Download and install ***CP210x Windows Drive
 8. In login prompt : type `root` as user.
 9. Your current directory in terminal will be like: `/opt/edgeai-gst-apps`
 
-**Connecting remotely using SSH**
- You can also access the device with the IP address that is shown on the display. With the IP address one can ssh directly to the board.
+**Connecting remotely using SSH**\
+ You can also access the device with the IP address that is shown on the display. With the IP address one can ssh directly to the board.\
  In MObaXterm:
  1. Click session
  2. Click SSH
@@ -151,7 +153,8 @@ After login when You go to the `/opt` the directory structure will be like this:
 We can use `scp` Command to copy the model from our PC to the borad.
 1. Open your terminal
 2. Go to the directory where Model is saved.
-3. Type the following command:\
+3. Type the following command:
+
 ```scp -r model_file_name root@ip_address_of_board:/opt/model_zoo```
 
 ![copying_model](copying_model.png)
