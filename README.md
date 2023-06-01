@@ -73,6 +73,9 @@ It is recommended to Download the Annotated Data, incase by mistake project got 
 
 
 ### 3. Model Selection
+Once all the data is annotated, move to the next section.
+**Device Selection:** Select the Target device. Drag the slider to find the best trade-off between power and performance for your task.
+**Model Selection:**  Select a model acording to the need "faster accuracy" or "faster Perfomance"
 
 ### 4. Train
 
