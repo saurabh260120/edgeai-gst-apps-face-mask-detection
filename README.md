@@ -105,6 +105,21 @@ Click on **Download the Artifact to PC** to Download the Compied model on the Lo
 
 
 ### 6. Deployment on Board
+Model can be Deployed on the board in two ways:
+1. Connect the board and click Deploy model on board.
+2. Manually Copying the Model on the board.
+
+### Deployment: Manually Copying the Model on the Board
+We can copy the model to the board manually.
+
+**Remotly Connecting PC to board**
+1. Install the [MobaXterm](https://mobaxterm.mobatek.net/download.html) to the PC to remotely connect to the Board.
+2. Once installed connect the board to the PC through the UART cable. 
+3. Open MobaXterm and Click on session.
+4. Click on the Serial and select a Port from the drop down.
+5. Baud rate should be configured to **115200** bps in serial port communication program. 
+:o: Note: If using a Windows computer, the user may need to install additional drivers for ports to show up. (https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers)
+
 
 
 
