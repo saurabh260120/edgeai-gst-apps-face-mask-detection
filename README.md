@@ -45,13 +45,44 @@ Below are the steps to use Edge AI Studio Model Composer
 Data can taken from various input sources. Click on the Input Source.
 1. **PC Camera:** The Images can directly be taken using Inbuilt PC camera. Click on the PC Camera and select a Camera from the available Camera list, Select the image format from "JPG" and "PNG".
 2. **Device Camera:**
-3. **Import Images from Local PC:** Existing datasets can be imported directly in JPG, PNG format.
+3. **Import Images from Local PC:** Existing datasets can be imported directly in JPG, PNG format. Click onImport Images from Local PC. Select a folder from the local PC. On the right panel select the images and click Confirm.  
 4. **Import Annotated Archive dataset:** Annotated archive data can also be imported.
 \:warning: *Note That the data annotated outside the edgeAI Studio can not be imported. Only the data which are annotated and Downloaded from edge AI studio, that can be uploaded.*
 
 ### 2. Data Annotations
-For O
+Once dataset is imported, data annotation can be done.
 
+**Steps for annotating For Object Detection:**
+1. Select a image from the left panel.
+2. Click on the Square like shape left to the image.
+3. Drag on the image where Box is to be drawn.
+4. Fill / Select the lable in pop up.
+5. Repeat for All the images.
+Note: Image can be zoomed , dragged aside also. Try all the icons left to the image.
+
+**Steps for annotating For Object Detection:**
+1. In classification first add all the label.
+2. Click on the '+' icon on the top right.
+3.  In the Pop Up window, Click on the + icon on the bottom left.
+4.  Enter the lable name and hit enter.
+5.  Now select image from the left panel and select the lable from right panel.
+6.  Repeat for all the images.
+
+Once Done with the annotations, the annotated data can be downloaded by clicking on Download symbol above the left panel.
+It is recommended to Download the Annotated Data, incase by mistake project got deleted.
+
+
+### 3. Model Selection
+
+### 4. Train
+
+### 5. Compilation
+
+
+### 5. Live Preview
+
+
+### 6. Deployment on Board
 
 
 
