@@ -50,6 +50,7 @@ Data can taken from various input sources. Click on the Input Source.
 \:warning: *Note That the data annotated outside the edgeAI Studio can not be imported. Only the data which are annotated and Downloaded from edge AI studio, that can be uploaded.*
 
 ### 2. Data Annotations
+For O
 
 
 
