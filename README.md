@@ -155,7 +155,7 @@ We can use `scp` Command to copy the model from our PC to the borad.
 2. Go to the directory where Model is saved.
 3. Type the following command:
 
-```scp -r model_file_name root@ip_address_of_board:/opt/model_zoo```
+```scp -r model_folder_name root@ip_address_of_board:/opt/model_zoo```
 
 ![copying_model](copying_model.png)
 
