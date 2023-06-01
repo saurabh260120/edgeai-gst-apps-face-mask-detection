@@ -78,6 +78,9 @@ Once all the data is annotated, move to the next section.
 **Model Selection:**  Select a model acording to the need "faster accuracy" or "faster Perfomance"
 
 ### 4. Train
+Tune the training Parameter Acording to need. And Click start training on the top-right.
+The trainig Perfomance will be Shown.
+
 
 ### 5. Compilation
 
