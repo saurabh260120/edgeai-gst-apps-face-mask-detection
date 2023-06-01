@@ -82,7 +82,7 @@ Once all the data is annotated, move to the next section.\
 Tune the training Parameter Acording to need. And Click on the start training button on the top-right.
 The trainig Perfomance will be Shown as shown in below image.
 
-![plot](training_log.png)
+![plot](images/training_log.png)
 
 Once the model is trained go to the next Section Compilation.
 
@@ -95,7 +95,7 @@ It will take some good amout of time.
 
 After Compilation is over, the screen will be something like below image.
 
-![plot](compiled_model.png)
+![plot](images/compiled_model.png)
 
 Click on **Download the Artifact to PC** to Download the Compied model on the Local PC.
 
@@ -103,12 +103,12 @@ Click on **Download the Artifact to PC** to Download the Compied model on the Lo
 
 The Downloded model will look like this:
 
-![plot](Model_directory.png)
+![plot](images/Model_directory.png)
 
 ### 7. Live Preview
 
 
-### 8. Deployment on Board
+## Deployment on Board
 Model can be Deployed on the board in two ways:
 1. Connect the board and click Deploy model on board.
 2. Manually Copying the Model on the board.
@@ -141,7 +141,7 @@ One Can also use **VS code** to remotely login using SSH.
 
 After login when You go to the `/opt` the directory structure will be like this:
 
-![SDK Directory](SDK_directory.png)
+![SDK Directory](images/SDK_directory.png)
 
 `/opt/edgeai-gst-apps`  Contains the apps to run the model.\
 `/opt/model_zoo` contains all the model. The downloaded model from the EDGE AI STUDIO will be saved here.\
@@ -157,7 +157,11 @@ We can use `scp` Command to copy the model from our PC to the borad.
 
 ```scp -r model_folder_name root@ip_address_of_board:/opt/model_zoo```
 
-![copying_model](copying_model.png)
+![copying_model](images/copying_model.png)
+
+## Testing on the board
+
+### 1. Importing data on the board
 
 
-
+### 2. Making Configuration file
