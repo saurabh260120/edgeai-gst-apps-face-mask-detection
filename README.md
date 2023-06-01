@@ -47,7 +47,8 @@ Data can taken from various input sources. Click on the Input Source.
 2. **Device Camera:**
 3. **Import Images from Local PC:** Existing datasets can be imported directly in JPG, PNG format. Click onImport Images from Local PC. Select a folder from the local PC. On the right panel select the images and click Confirm.  
 4. **Import Annotated Archive dataset:** Annotated archive data can also be imported.
-\:warning: *Note That the data annotated outside the edgeAI Studio can not be imported. Only the data which are annotated and Downloaded from edge AI studio, that can be uploaded.*
+
+:o: *Note that the data annotated outside the edgeAI Studio can not be imported. Only the data which are annotated and Downloaded from edge AI studio, that can be uploaded.*
 
 ### 2. Data Annotations
 Once dataset is imported, data annotation can be done.
@@ -78,8 +79,8 @@ Once all the data is annotated, move to the next section.
 **Model Selection:**  Select a model acording to the need "faster accuracy" or "faster Perfomance"
 
 ### 4. Train
-Tune the training Parameter Acording to need. And Click start training on the top-right.
-The trainig Perfomance will be Shown.
+Tune the training Parameter Acording to need. And Click on the start training button on the top-right.
+The trainig Perfomance will be Shown as shown in below image.
 
 ![plot](training_log.png)
 
@@ -95,6 +96,9 @@ It will take some good amout of time.
 After Compilation is over, the screen will be something like below image.
 ![plot](compiled_model.png)
 
+Click on **Download the Artifact to PC** to Download the Compied model on the Local PC.
+
+:o: Note: Download the model to your PC before closing the browser. It will not be available when you log in again if you do not download it first.
 
 
 ### 5. Live Preview
