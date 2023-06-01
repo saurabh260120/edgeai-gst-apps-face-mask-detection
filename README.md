@@ -81,8 +81,20 @@ Once all the data is annotated, move to the next section.
 Tune the training Parameter Acording to need. And Click start training on the top-right.
 The trainig Perfomance will be Shown.
 
+![plot](training_log.png)
+
+Once the model is trained go to the next Section Compilation.
+
 
 ### 5. Compilation
+In Compilation Section, Choose the compilation parameters from the drop down.
+If accuracy is not priority and only you need to compile to see the result select the "Best Speed Preset". 
+After that Hit Start Compiling.
+It will take some good amout of time.
+
+After Compilation is over, the screen will be something like below image.
+![plot](training_log.png)
+
 
 
 ### 5. Live Preview
