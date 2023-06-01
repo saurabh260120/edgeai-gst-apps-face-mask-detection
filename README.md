@@ -93,7 +93,7 @@ After that Hit Start Compiling.
 It will take some good amout of time.
 
 After Compilation is over, the screen will be something like below image.
-![plot](training_log.png)
+![plot](compiled_model.png)
 
 
 
