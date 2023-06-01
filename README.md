@@ -112,7 +112,7 @@ Model can be Deployed on the board in two ways:
 ### Deployment: Manually Copying the Model on the Board
 We can copy the model to the board manually.
 
-**Remotly Connecting PC to board**
+**Connecting Board to PC using UART**
 1. Install the [MobaXterm](https://mobaxterm.mobatek.net/download.html) to the PC to remotely connect to the Board.
 2. Once installed connect the board to the PC through the UART cable. 
 3. Open MobaXterm and Click on session.
@@ -123,9 +123,22 @@ We can copy the model to the board manually.
 
 6. Once the port are visible, Connect to all the ports and Reboot the board. 
 7. The boot log will be visible in one of the ports. Other ports may be closed.
-8. In login prompt : type ***root*** as user.
+8. In login prompt : type `root` as user.
 9. Your current directory in terminal will be like: `/opt/edgeai-gst-apps`
 
+**Connecting remotely using SSH**
+ You can also access the device with the IP address that is shown on the display. With the IP address one can ssh directly to the board.
+ In MObaXterm:
+ 1. Click session
+ 2. Click SSH
+ 3. Enter the IP displayed at board
+ 4. Hit enter
+ 5. In the login prompt:  type `root` as user.
+ 
+One Can also use **VS code** to remotely login using SSH.
 
+After login when You go to the `/opt` the directory structure will be like this:
+
+<img width="960" alt="SDK_directory" src="https://github.com/saurabh260120/edgeai-gst-apps-face-mask-detection/assets/91410452/aae01305-1c7b-4a9e-bb9d-e84f161403ac">
 
 
