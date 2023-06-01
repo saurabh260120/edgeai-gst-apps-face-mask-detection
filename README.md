@@ -44,7 +44,13 @@ Below are the steps to use Edge AI Studio Model Composer
 ### 2. Dataset Preparation
 Data can taken from various input sources. Click on the Input Source.
 1. **PC Camera:** The Images can directly be taken using Inbuilt PC camera. Click on the PC Camera and select a Camera from the available Camera list, Select the image format from "JPG" and "PNG".
-2. **Device Camera: **
+2. **Device Camera:**
+3. **Import Images from Local PC:** Existing datasets can be imported directly in JPG, PNG format.
+4. **Import Annotated Archive dataset:** Annotated archive data can also be imported.
+\:warning: *Note That the data annotated outside the edgeAI Studio can not be imported. Only the data which are annotated and Downloaded from edge AI studio, that can be uploaded.*
+
+### 2. Data Annotations
+
 
 
 
