@@ -159,9 +159,17 @@ We can use `scp` Command to copy the model from our PC to the borad.
 
 ![copying_model](images/copying_model.png)
 
+
 ## Testing on the board
+
 
 ### 1. Importing data on the board
 
 
+
+
 ### 2. Making Configuration file
+
+
+
+## Post Processing
