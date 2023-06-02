@@ -113,7 +113,7 @@ Model can be Deployed on the board in two ways:
 1. Connect the board and click Deploy model on board.
 2. Manually Copying the Model on the board.
 
-**Connecting Board to PC using UART**
+### Connecting Board to PC using UART
 1. Install the [MobaXterm](https://mobaxterm.mobatek.net/download.html) to the PC to remotely connect to the Board.
 2. Once installed connect the board to the PC through the UART cable. 
 3. Open MobaXterm and Click on session.
@@ -128,7 +128,7 @@ Click on the link. Go to Downloads. Download and install ***CP210x Windows Drive
 8. In login prompt : type `root` as user.
 9. Your current directory in terminal will be like: `/opt/edgeai-gst-apps`
 
-**Connecting remotely using SSH**\
+### Connecting remotely using SSH
  You can also access the device with the IP address that is shown on the display. With the IP address one can ssh directly to the board.\
  In MObaXterm:
  1. Click session
@@ -164,7 +164,16 @@ We can use `scp` Command to copy the model from our PC to the borad.
 
 
 ### 1. Importing data on the board
+Before Importing Images to the board, Rename the images file sequentially.
+```0000.png , 0001.png ,0002.png ......... 000n.png```
+It will help in slide showing images on the screen.
 
+To copy the data to the board `scp` command can be used again.
+1. Go to the folder where image folder is located.
+2. Type the below command.
+`scp -r image_folder_name root@ip_address_of_device:/opt/edgeai-test-data`
+3. Hit enter
+4. All the images files will be copied to `opt/edgeai-test-data/image_folder_name`
 
 
 
