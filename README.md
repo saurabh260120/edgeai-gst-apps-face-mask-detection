@@ -169,15 +169,119 @@ Before Importing Images to the board, Rename the images file sequentially.
 It will help in slide showing images on the screen.
 
 To copy the data to the board `scp` command can be used again.
-1. Go to the folder where image folder is located.
+1. Go to the folder where image fovlder is located.
 2. Type the below command.
 `scp -r image_folder_name root@ip_address_of_device:/opt/edgeai-test-data`
 3. Hit enter
 4. All the images files will be copied to `opt/edgeai-test-data/image_folder_name`
 
+![copying_images](images/scp_for_image.png)
 
 
 ### 2. Making Configuration file
+Next task is to make Configuration file for the project. 
+The config folder is located at `opt/edgeai-gst-apps/configs`
+(You can make a copy of the existing `.yaml` file and edit it or else you can make a new `.yaml` file.)
+
+**Component of config file**
+
+```
+title: "Face Mask Detection"
+log_level: 2
+inputs:
+    input0:
+        source: /dev/video2
+        format: jpeg
+        width: 1280
+        height: 720
+        framerate: 30
+    input1:
+        source: /opt/edgeai-test-data/videos/video_0000_h264.h264
+        format: h264
+        width: 1280
+        height: 720
+        framerate: 30
+        loop: True
+    input2:
+        source: /opt/edgeai-test-data/Mask_dataset/%04d.png
+        width: 1280
+        height: 720
+        index: 0
+        framerate: 1
+        loop: True
+models:
+    model0:
+        model_path: /opt/model_zoo/20230530-081846_yolox_s_lite_onnxrt_TDA4VM
+        alpha: 0.4
+    model1:
+        model_path: /opt/model_zoo/ss-8720
+        alpha: 0.4
+    model2:
+        model_path: /opt/model_zoo/ONR-SS-8610-deeplabv3lite-mobv2-ade20k32-512x512
+        alpha: 0.4
+outputs:
+    output0:
+        sink: kmssink
+        width: 1920
+        height: 1080
+        overlay-performance: True
+    output1:
+        sink: /opt/edgeai-test-data/output/output_video.mkv
+        width: 1920
+        height: 1080
+    output2:
+        sink: /opt/edgeai-test-data/output/output_image_%04d.jpg
+        width: 1920
+        height: 1080
+
+flows:
+    flow0: [input2,model0,output0,[320,180,1280,720]]
+```
+
+1. inputs :  
+This include all the input sources.\
+We can have multiple input : input 0,input 1 ....... input n.\
+             `source: /dev/video2` is for the camera connected to te board.\
+             `source: /opt/edgeai-test-data/videos/video_0000_h264.h264` is for the video dataset saved at the given location.\
+             `source: /opt/edgeai-test-data/Mask_dataset/%04d.png` is for the images at the`/opt/edgeai-test-data/Mask_dataset` . Note that the images will go one by one for input as slide show.
+
+2. models :   
+Like inputs we can have different model. Path of the model in model_zoo needs to be specified here.
+
+3. outputs:  
+In this section, output path is specified.\
+`kmssink` correspond to the Monitor connected to the board.\
+We can also save the results as video or images files by specifying their path.
+
+4. flows :  
+In flow we specify the combination of input source ,model name and outputs destination.  
+For example:  
+`flow0: [input2,model0,output0,[320,180,1280,720]]`  
+This means use input 2, model 0, and output 0 to run.    
+[320,180,1280,720]  
+In this the first number and second number is for X and Y cordinate respectively from where we want to display the result on the monitor.  
+The Third number shows the length of result to be shown along X axis .  
+The Fourth number shows the length of result to be shown along Y axis .  
+. 
+![copying_images](images/flow.png)
+.  
+:o: Note that we can write many flows using different combination of input , model and output. And we can see multiple output on the monitor. 
+
+
+
+## Running the Model
+Once You have done below three things:
+1. Copied model to the board
+2. Copied dataset to the Board
+3. Added Config file
+
+The Model is ready to run.
+We can run the model using python-apps or CPP apps.
+To run the Model with python apps:
+1. Go to `/opt/edgeai-gst-apps/apps_python`
+2. Type `./app_edgeai.py ../congigs/config_file_name.yaml` in Terminal and hit Enter.
+
+![copying_images](images/run.png)
 
 
 
