@@ -296,3 +296,7 @@ In this Face Mask Detection Project, Following Post Processing Has been used:
 
 ## Result
 
+<br/>
+<p align="center">
+<img src="images/final_face_mask.mp4" width="640" title="Resultant Output">
+</p> 
