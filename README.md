@@ -286,3 +286,13 @@ To run the Model with python apps:
 
 
 ## Post Processing
+
+In Object Detection , We will get a bounding Box with label around the Object.\
+Apart from this we can Add some Custom Post Processing. And show some meaning full result.\
+In this Face Mask Detection Project, Following Post Processing Has been used:
+1. Total Number of Detected faces
+2. Differect color of the bounding boxes for the differecnt label
+3. Count of each lable
+
+## Result
+
