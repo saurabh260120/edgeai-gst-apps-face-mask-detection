@@ -5,18 +5,18 @@ This Github Repository adds support for **Face Mask Detection** Using [EDGE-AI-S
 
 ## Face Mask Detection
 Face Mask detection is the task of detecting whether or not a person is wearing a mask. 
-This Project will catogorise a person in one of the three catogories.
+This Project will catagories a person in one of the three catagories.
 1. With Correct Mask
 2. With Incorrect Mask
 3. No Mask
 
-This Project usese Objcet detection in Edge AI Studio to Classify the Person in one of the three Categories and make Bounding boxex around their faces.
+This Project uses Object detection in Edge AI Studio to Classify the Person in one of the three Categories and make Bounding boxes around their faces.
 
-## Understanding and Connecting Devives
+## Understanding and Connecting Devices
 A Link of Detailed Documentation of the Devices are given below:
 1. TDA4VM : (https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/TDA4VM/08_06_00/exports/docs/common/sdk_overview.html)
-2. AM62A  : ( )
-3. AM68A  :
+2. AM62A  : (https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM62AX/08_06_00/exports/docs/common/sdk_overview.html)
+3. AM68A  : (https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM68A/08_06_00/exports/docs/common/sdk_overview.html)
 
 The above documents tells in details how to start the board, and run the sample apps on that.
 
@@ -57,7 +57,7 @@ Once dataset is imported, data annotation can be done.
 1. Select a image from the left panel.
 2. Click on the Square like shape left to the image.
 3. Drag on the image where Box is to be drawn.
-4. Fill / Select the lable in pop up.
+4. Fill / Select the label in pop up.
 5. Repeat for All the images.
 Note: Image can be zoomed , dragged aside also. Try all the icons left to the image.
 
@@ -65,8 +65,8 @@ Note: Image can be zoomed , dragged aside also. Try all the icons left to the im
 1. In classification first add all the label.
 2. Click on the '+' icon on the top right.
 3.  In the Pop Up window, Click on the + icon on the bottom left.
-4.  Enter the lable name and hit enter.
-5.  Now select image from the left panel and select the lable from right panel.
+4.  Enter the label name and hit enter.
+5.  Now select image from the left panel and select the label from right panel.
 6.  Repeat for all the images.
 
 Once Done with the annotations, the annotated data can be downloaded by clicking on Download symbol above the left panel.
@@ -76,11 +76,11 @@ It is recommended to Download the Annotated Data, incase by mistake project got 
 ### 4. Model Selection
 Once all the data is annotated, move to the next section.\
 **Device Selection:** Select the Target device. Drag the slider to find the best trade-off between power and performance for your task.\
-**Model Selection:**  Select a model acording to the need "faster accuracy" or "faster Perfomance"
+**Model Selection:**  Select a model according to the need "faster accuracy" or "faster Performance"
 
 ### 5. Train
-Tune the training Parameter Acording to need. And Click on the start training button on the top-right.
-The trainig Perfomance will be Shown as shown in below image.
+Tune the training Parameter According to need. And Click on the start training button on the top-right.
+The training Performance will be Shown as shown in below image.
 
 ![plot](images/training_log.png)
 
@@ -91,17 +91,17 @@ Once the model is trained go to the next Section Compilation.
 In Compilation Section, Choose the compilation parameters from the drop down.
 If accuracy is not priority and only you need to compile to see the result select the "Best Speed Preset". 
 After that Hit Start Compiling.
-It will take some good amout of time.
+It will take some good amount of time.
 
 After Compilation is over, the screen will be something like below image.
 
 ![plot](images/compiled_model.png)
 
-Click on **Download the Artifact to PC** to Download the Compied model on the Local PC.
+Click on **Download the Artifact to PC** to Download the Compiled model on the Local PC.
 
 :o: Note: Download the model to your PC before closing the browser. It will not be available when you log in again if you do not download it first.
 
-The Downloded model will look like this:
+The Downloaded model will look like this:
 
 ![plot](images/Model_directory.png)
 
@@ -150,7 +150,7 @@ After login when You go to the `/opt` the directory structure will be like this:
 
 **Copying Downloaded model to the board**
 
-We can use `scp` Command to copy the model from our PC to the borad.
+We can use `scp` Command to copy the model from our PC to the board.
 1. Open your terminal
 2. Go to the directory where Model is saved.
 3. Type the following command:
@@ -169,7 +169,7 @@ Before Importing Images to the board, Rename the images file sequentially.
 It will help in slide showing images on the screen.
 
 To copy the data to the board `scp` command can be used again.
-1. Go to the folder where image fovlder is located.
+1. Go to the folder where image folder is located.
 2. Type the below command.
 `scp -r image_folder_name root@ip_address_of_device:/opt/edgeai-test-data`
 3. Hit enter
@@ -259,12 +259,11 @@ For example:
 `flow0: [input2,model0,output0,[320,180,1280,720]]`  
 This means use input 2, model 0, and output 0 to run.    
 [320,180,1280,720]  
-In this the first number and second number is for X and Y cordinate respectively from where we want to display the result on the monitor.  
+In this the first number and second number is for X and Y coordinate respectively from where we want to display the result on the monitor.  
 The Third number shows the length of result to be shown along X axis .  
 The Fourth number shows the length of result to be shown along Y axis .  
-. 
-![copying_images](images/flow.png)
-.  
+
+
 :o: Note that we can write many flows using different combination of input , model and output. And we can see multiple output on the monitor. 
 
 
@@ -279,7 +278,7 @@ The Model is ready to run.
 We can run the model using python-apps or CPP apps.
 To run the Model with python apps:
 1. Go to `/opt/edgeai-gst-apps/apps_python`
-2. Type `./app_edgeai.py ../congigs/config_file_name.yaml` in Terminal and hit Enter.
+2. Type `./app_edgeai.py ../configs/config_file_name.yaml` in Terminal and hit Enter.
 
 ![copying_images](images/run.png)
 
@@ -291,10 +290,14 @@ In Object Detection , We will get a bounding Box with label around the Object.\
 Apart from this we can Add some Custom Post Processing. And show some meaning full result.\
 In this Face Mask Detection Project, Following Post Processing Has been used:
 1. Total Number of Detected faces
-2. Differect color of the bounding boxes for the differecnt label
-3. Count of each lable
+2. Different color of the bounding boxes for the different label
+3. Count of each label
 
 ## Result
+
+![Result1](images/output_image_0004.jpg)
+
+![Result2](images/output_image_0009.jpg)
 
 <br/>
 <p align="center">
