@@ -293,6 +293,29 @@ In this Face Mask Detection Project, Following Post Processing Has been used:
 2. Different color of the bounding boxes for the different label
 3. Count of each label
 
+```
+ # Calculating the bounding boxes of each type
+        b_num=0 # total number of bounding boxes
+        num_correct=0
+        num_incorrect=0
+        num_nomask=0
+        for b in bbox:
+            if b[5] > self.model.viz_threshold:
+              b_num=b_num+1
+              if int(b[4])==2:
+                num_correct=num_correct+1
+              if int(b[4])==1:
+                num_nomask=num_nomask+1
+              if int(b[4])==0:
+                num_incorrect=num_incorrect+1
+```
+
+- In the above Code, b[5] is the probability of correct prediction. So if the probability is greater than a particular threshold (`self.model.viz_threshold`) then only bounding box will be created.
+- b[4] corresponds to the class id.
+
+**The code changes done to add post-processing logic for can be found in this** [commit](https://github.com/saurabh260120/edgeai-gst-apps-face-mask-detection/commit/9a6d30fc3e86e56d235f63f11907682cd05af262).  
+
+
 ## Result
 
 ![Result1](images/output_image_0004.jpg)
