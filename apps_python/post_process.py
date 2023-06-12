@@ -199,6 +199,21 @@ class PostProcessDetection(PostProcess):
             bbox[..., (0, 2)] /= self.model.resize[0]
             bbox[..., (1, 3)] /= self.model.resize[1]
 
+        # number of bounding boxes
+        b_num=0
+        num_correct=0
+        num_incorrect=0
+        num_nomask=0
+        for b in bbox:
+            if b[5] > self.model.viz_threshold:
+              b_num=b_num+1
+              if int(b[4])==2:
+                num_correct=num_correct+1
+              if int(b[4])==1:
+                num_nomask=num_nomask+1
+              if int(b[4])==0:
+                num_incorrect=num_incorrect+1
+
         for b in bbox:
             if b[5] > self.model.viz_threshold:
                 if type(self.model.label_offset) == dict:
@@ -206,6 +221,54 @@ class PostProcessDetection(PostProcess):
                 else:
                     class_name = self.model.classnames[self.model.label_offset + int(b[4])]
                 img = self.overlay_bounding_box(img, b, class_name)
+
+
+        cv2.rectangle(
+            img,
+            (0, 0),
+            (250, 70),
+            (255,255,255),
+            -1,
+        )
+        cv2.rectangle(
+            img,
+            (0, 0),
+            (250, 70),
+            (0,0,0),
+        )
+        cv2.putText(
+            img,
+            "Number of Face Detected :"+str(b_num),
+            (5, 20),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.5,
+            (0, 0, 0),1,
+        )
+        cv2.putText(
+            img,
+            "Number of Correct Mask:"+str(num_correct),
+            (5, 35),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.5,
+            (0, 0, 0),1,
+        )
+        cv2.putText(
+            img,
+            "Number of InCorrect Mask :"+str(num_incorrect),
+            (5, 50),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.5,
+            (0, 0, 0),1,
+        )
+        cv2.putText(
+            img,
+            "Number of No Mask:"+str(num_nomask),
+            (5, 65),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.5,
+            (0, 0, 0),1,
+        )
+
 
         if self.debug:
             self.debug.log(self.debug_str)
@@ -228,24 +291,63 @@ class PostProcessDetection(PostProcess):
             int(box[2] * frame.shape[1]),
             int(box[3] * frame.shape[0]),
         ]
-        box_color = (20, 220, 20)
-        text_color = (0, 0, 0)
-        cv2.rectangle(frame, (box[0], box[1]), (box[2], box[3]), box_color, 2)
-        cv2.rectangle(
-            frame,
-            (int((box[2] + box[0]) / 2) - 5, int((box[3] + box[1]) / 2) + 5),
-            (int((box[2] + box[0]) / 2) + 160, int((box[3] + box[1]) / 2) - 15),
-            box_color,
-            -1,
-        )
-        cv2.putText(
-            frame,
-            class_name,
-            (int((box[2] + box[0]) / 2), int((box[3] + box[1]) / 2)),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.5,
-            text_color,
-        )
+        if class_name=="No Mask":
+          box_color = (0, 0, 255)
+          text_color = (255, 255, 255)
+          cv2.rectangle(frame, (box[0], box[1]), (box[2], box[3]), box_color, 2)
+          cv2.rectangle(
+              frame,
+              (int((box[2] + box[0]) / 2) - 5, int((box[3] + box[1]) / 2) + 5),
+              (int((box[2] + box[0]) / 2) + 160, int((box[3] + box[1]) / 2) - 15),
+              box_color,
+              -1,
+          )
+          cv2.putText(
+              frame,
+              class_name,
+              (int((box[2] + box[0]) / 2), int((box[3] + box[1]) / 2)),
+              cv2.FONT_HERSHEY_SIMPLEX,
+              0.5,
+              text_color,
+          )
+        if class_name=="Incorrect Mask":
+          box_color = (255, 0, 0)
+          text_color = (255,255,255)
+          cv2.rectangle(frame, (box[0], box[1]), (box[2], box[3]), box_color, 2)
+          cv2.rectangle(
+              frame,
+              (int((box[2] + box[0]) / 2) - 5, int((box[3] + box[1]) / 2) + 5),
+              (int((box[2] + box[0]) / 2) + 160, int((box[3] + box[1]) / 2) - 15),
+              box_color,
+              -1,
+          )
+          cv2.putText(
+              frame,
+              class_name,
+              (int((box[2] + box[0]) / 2), int((box[3] + box[1]) / 2)),
+              cv2.FONT_HERSHEY_SIMPLEX,
+              0.5,
+              text_color,
+          )
+        if class_name=="Correct Mask":
+          box_color = (20, 220, 20)
+          text_color = (0, 0, 0)
+          cv2.rectangle(frame, (box[0], box[1]), (box[2], box[3]), box_color, 2)
+          cv2.rectangle(
+              frame,
+              (int((box[2] + box[0]) / 2) - 5, int((box[3] + box[1]) / 2) + 5),
+              (int((box[2] + box[0]) / 2) + 160, int((box[3] + box[1]) / 2) - 15),
+              box_color,
+              -1,
+          )
+          cv2.putText(
+              frame,
+              class_name,
+              (int((box[2] + box[0]) / 2), int((box[3] + box[1]) / 2)),
+              cv2.FONT_HERSHEY_SIMPLEX,
+              0.5,
+              text_color,
+          )
 
         if self.debug:
             self.debug_str += class_name
