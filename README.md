@@ -3,7 +3,7 @@
 
 This Github Repository adds support for **Face Mask Detection** Using [EDGE-AI-STUDIO](https://www.ti.com/tool/EDGE-AI-STUDIO) Model Composer  for TI Embedded Processor.
 
-## Face Mask Detection
+## 1. Face Mask Detection
 Face Mask detection is the task of detecting whether or not a person is wearing a mask. 
 This Project will catagories a person in one of the three catagories.
 1. With Correct Mask
@@ -12,7 +12,7 @@ This Project will catagories a person in one of the three catagories.
 
 This Project uses Object detection in Edge AI Studio to Classify the Person in one of the three Categories and make Bounding boxes around their faces.
 
-## Understanding and Connecting Devices
+## 2. Understanding and Connecting Devices
 A Link of Detailed Documentation of the Devices are given below:
 1. TDA4VM : (https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/TDA4VM/08_06_00/exports/docs/common/sdk_overview.html)
 2. AM62A  : (https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM62AX/08_06_00/exports/docs/common/sdk_overview.html)
@@ -20,7 +20,7 @@ A Link of Detailed Documentation of the Devices are given below:
 
 The above documents tells in details how to start the board, and run the sample apps on that.
 
-## Edge AI Studio Model Composer
+## 3. Edge AI Studio Model Composer
 The [Edge AI studio model composer](https://dev.ti.com/modelcomposer/) train , optimize and Compile the AI model for TI Embedded Processor. 
 Currently, the Edge AI Studio can compose Object detection and Image Classification Task.
 
@@ -32,16 +32,28 @@ Currently, the Edge AI Studio can compose Object detection and Image Classificat
 | AM68A                   | :heavy_check_mark: |
 | SK-TDA4VM               | :heavy_check_mark: |
 
-## Steps to Use Edge AI Studio Model Composer
+## 4. Steps to Use Edge AI Studio Model Composer
 Below are the steps to use Edge AI Studio Model Composer
 
-### 1. Creating the project
+
+### 4.1 EdgeAI Studio setup
+1. On the model Composer main page, On the top bar of the GUI, click on Options → Serial Port Settings.
+2. If TI Cloud Agent is not installed on your system, a prompt will appear with instructions on how to do so.
+3. Install the TI cloud Agent.
+4. ADD [TICloudAgent Bridge](https://chrome.google.com/webstore/detail/ticloudagent-bridge/pfillhniocmjcapelhjcianojmoidjdk) extension to the browser.
+5. RELOAD the page, and reopen the Serial Port Settings.
+6. Model Composer should automatically detect the appropriate serial port and baud rate to use. The Port and Baud Rate settings can be changed. However, it is recommended to use the default detected values.
+:o: Note: If using a Windows computer, the user may need to install additional drivers for ports to show up. (https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers).\
+Click on the link. Go to Downloads. Download and install ***CP210x Windows Drivers with Serial Enumerator***.
+- For more details , on the main page go to "help --> Quick Start Guide" or  [click here](https://software-dl.ti.com/ccs/esd/training/workshop/edgeaistudio/modelcomposer_quick_start_guide.html)
+
+### 4.2. Creating the project
 1. Click on create new project.
 2. From task type Drop Down menu select "Object detection" or "Image Classification" based on the task.
 3. Write name of project
 4. Click Start Composing
 
-### 2. Dataset Preparation
+### 4.3. Dataset Preparation
 Data can taken from various input sources. Click on the Input Source.
 1. **PC Camera:** The Images can directly be taken using Inbuilt PC camera. Click on the PC Camera and select a Camera from the available Camera list, Select the image format from "JPG" and "PNG".
 2. **Device Camera:**
@@ -50,7 +62,7 @@ Data can taken from various input sources. Click on the Input Source.
 
 :o: *Note that the data annotated outside the edgeAI Studio can not be imported. Only the data which are annotated and Downloaded from edge AI studio, that can be uploaded.*
 
-### 3. Data Annotations
+### 4.4. Data Annotations
 Once dataset is imported, data annotation can be done.
 
 **Steps for annotating For Object Detection:**
@@ -73,12 +85,12 @@ Once Done with the annotations, the annotated data can be downloaded by clicking
 It is recommended to Download the Annotated Data, incase by mistake project got deleted.
 
 
-### 4. Model Selection
+### 4.5. Model Selection
 Once all the data is annotated, move to the next section.\
 **Device Selection:** Select the Target device. Drag the slider to find the best trade-off between power and performance for your task.\
 **Model Selection:**  Select a model according to the need "faster accuracy" or "faster Performance"
 
-### 5. Train
+### 4.6. Train
 Tune the training Parameter According to need. And Click on the start training button on the top-right.
 The training Performance will be Shown as shown in below image.
 
@@ -87,7 +99,7 @@ The training Performance will be Shown as shown in below image.
 Once the model is trained go to the next Section Compilation.
 
 
-### 6. Compilation
+### 4.7. Compilation
 In Compilation Section, Choose the compilation parameters from the drop down.
 If accuracy is not priority and only you need to compile to see the result select the "Best Speed Preset". 
 After that Hit Start Compiling.
@@ -105,15 +117,26 @@ The Downloaded model will look like this:
 
 ![plot](images/Model_directory.png)
 
-### 7. Live Preview
+### 4.8. Live Preview
 
+Once the model is compiled , Live Preview can be done. In live preview we can test our compiled model with live camera.
+Some setting needs to be done before live preview.
+Follow these step to live preview:
+1. Select Live preview in the top part of the page.
+2. Connect the board to PC by UART cable.
+3. At the bottom left click on capsule like icon. After clicking , Hardware connected will be shown at bottom left.
 
-## Deployment on Board
+![Connect to ti agent](images/TI_agent.png)
+
+4. Press the Device Setup button to configure the development board.
+5. Press the Start Live preview button to download the model from the server to the EVM and run the preview.
+
+## 5. Deployment on Board
 Model can be Deployed on the board in two ways:
 1. Connect the board and click Deploy model on board.
 2. Manually Copying the Model on the board.
 
-### Connecting Board to PC using UART
+### 5.1 Connecting Board to PC using UART
 1. Install the [MobaXterm](https://mobaxterm.mobatek.net/download.html) to the PC to remotely connect to the Board.
 2. Once installed connect the board to the PC through the UART cable. 
 3. Open MobaXterm and Click on session.
@@ -128,7 +151,7 @@ Click on the link. Go to Downloads. Download and install ***CP210x Windows Drive
 8. In login prompt : type `root` as user.
 9. Your current directory in terminal will be like: `/opt/edgeai-gst-apps`
 
-### Connecting remotely using SSH
+### 5.2 Connecting remotely using SSH
  You can also access the device with the IP address that is shown on the display. With the IP address one can ssh directly to the board.\
  In MObaXterm:
  1. Click session
@@ -160,10 +183,10 @@ We can use `scp` Command to copy the model from our PC to the board.
 ![copying_model](images/copying_model.png)
 
 
-## Testing on the board
+## 6. Testing on the board
 
 
-### 1. Importing data on the board
+### 6.1. Importing data on the board
 Before Importing Images to the board, Rename the images file sequentially.
 ```0000.png , 0001.png ,0002.png ......... 000n.png```
 It will help in slide showing images on the screen.
@@ -178,7 +201,7 @@ To copy the data to the board `scp` command can be used again.
 ![copying_images](images/scp_for_image.png)
 
 
-### 2. Making Configuration file
+### 6.2. Making Configuration file
 Next task is to make Configuration file for the project. 
 The config folder is located at `opt/edgeai-gst-apps/configs`
 (You can make a copy of the existing `.yaml` file and edit it or else you can make a new `.yaml` file.)
@@ -268,7 +291,7 @@ The Fourth number shows the length of result to be shown along Y axis .
 
 
 
-## Running the Model
+## 7. Running the Model
 Once You have done below three things:
 1. Copied model to the board
 2. Copied dataset to the Board
@@ -284,7 +307,7 @@ To run the Model with python apps:
 
 
 
-## Post Processing
+## 8. Post Processing
 
 In Object Detection , We will get a bounding Box with label around the Object.\
 Apart from this we can Add some Custom Post Processing. And show some meaning full result.\
